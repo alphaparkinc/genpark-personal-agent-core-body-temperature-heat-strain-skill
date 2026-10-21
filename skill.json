@@ -1,0 +1,64 @@
+{
+  "name": "genpark-personal-agent-core-body-temperature-heat-strain-skill",
+  "version": "1.0.0",
+  "title": "Core Body Temperature & Physiological Strain Index (PSI) Skill",
+  "description": "Physiological Strain Index (PSI) calculation, core temperature rise rate, heat acclimatization status, and active cooling intervention trigger. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "personal-agent",
+  "topics": [
+    "core-body-temperature",
+    "heat-strain",
+    "psi-index",
+    "thermoregulation",
+    "personal-agent",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "calculate_physiological_strain_index",
+      "description": "Compute Moran Physiological Strain Index (PSI 0-10) from core temperature (\u00b0C) and heart rate telemetry.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "core_temp_c_rest": {
+            "type": "number"
+          },
+          "core_temp_c_current": {
+            "type": "number"
+          },
+          "hr_rest_bpm": {
+            "type": "number"
+          },
+          "hr_current_bpm": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "core_temp_c_current",
+          "hr_current_bpm"
+        ]
+      }
+    },
+    {
+      "name": "prescribe_active_cooling_emergency_triage",
+      "description": "Synthesize rapid cooling countermeasures (cold water immersion, ice vest, palm cooling) based on PSI score.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "psi_score": {
+            "type": "number"
+          },
+          "core_temp_c": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "psi_score",
+          "core_temp_c"
+        ]
+      }
+    }
+  ]
+}
